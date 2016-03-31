@@ -1,4 +1,6 @@
-﻿using static System.Int32;
+﻿using System;
+using System.Linq;
+using static System.Int32;
 using static System.String;
 
 namespace StringCalculatorKata
@@ -13,6 +15,12 @@ namespace StringCalculatorKata
             }
             textToAdd = textToAdd.Replace("\n", ",");
             string[] numbers = textToAdd.Split(',');
+
+            if (numbers.Contains(String.Empty))
+            {
+                throw new ArgumentException("Double following delimiter is not valid");
+            }
+
             int sum = 0;
             foreach (var number in numbers)
             {
@@ -20,5 +28,7 @@ namespace StringCalculatorKata
             }
             return sum;
         }
+
+        private static void Main(string[] args) {}
     }
 }
